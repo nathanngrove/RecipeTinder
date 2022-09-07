@@ -1,0 +1,51 @@
+.h1 {
+  font-family: 'Nunito', sans-serif;
+  color: black;
+  font-size: 1.75rem;
+  margin: 0 0 1rem;
+}
+
+.h2 {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+.img {
+  height: calc(30vh + 2rem);
+  width: calc(400px + 2rem);
+  transform: translateX(-1rem) translateY(-1rem);
+  object-fit: cover;
+}
+
+.card {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  word-wrap: break-word;
+  width: 400px;
+  min-height: 500px;
+  padding: 1rem;
+}
+
+.ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.li {
+  list-style-type: none;
+  display: flex;
+  align-items:center;
+  padding: 0.5rem;
+}
+
+.dietaryIcon {
+  width: 20px;
+  margin-right: 5px;
+}
+
+.section {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 0.25rem;
+}

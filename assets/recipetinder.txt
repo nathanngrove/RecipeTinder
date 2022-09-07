@@ -1,0 +1,45 @@
+Make request for a recipe
+
+Parse through response and create a map of objects with the:
+
+"id"
+"title"
+"readyInMinutes"
+"servings"
+"image"
+"summary"
+"instructions"
+"vegetarian"
+"vegan"
+"glutenFree"
+"dairyFree"
+"extendedIngredients"
+	"id"
+	"name"
+	"measures"
+		"us"
+			"amount"
+			"unitLong"
+		"metric"
+			"amount"
+			"unitLong"
+
+PlanetScale DB
+User Table
+"email" - User's email
+"username" - User's username
+"password" - User's password
+"mac-address" - User's MAC address
+"origin-ip-address" - Uesr's IP address when account was created
+"date-created" - Date and Time User's account was created, when they initally started save recipes
+"date-joined" - Date and Time User created a username, when they actually signed up
+"last-logged-in" - Date and Time User was last logged in/active on the client
+"dietary-preferences"
+	"vegetarian" - Boolean
+	"vegan" - Boolean
+	"gluten-free" - Boolean
+	"dairy-free" - Boolean
+"recipesLiked" - list recipeIDs of the recipes the User liked
+"recipesDisliked" - list recipeIDs of the recipes the User disliked
+"recipesSaved" - list recipeIDs of the recipes the User has saved to their recipe book
+"recipesDiscarded" - list recipeIDs of the recipes the User discarded

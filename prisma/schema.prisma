@@ -11,7 +11,81 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  email     String   @unique
+  id                 Int          @id @default(autoincrement())
+  createdAt          DateTime     @default(now())
+  email              String       @unique
+  books              Book[]
+  sharedWithYouBooks UserBook[]
+  recipes            UserRecipe[]
+}
+
+model Book {
+  id          Int          @id @default(autoincrement())
+  author      User         @relation(fields: [authorId], references: [id])
+  authorId    Int
+  recipes     RecipeBook[]
+  users       UserBook[]
+  name        String
+  dateCreated DateTime     @default(now())
+  dateEditted DateTime     @default(now())
+}
+
+model Recipe {
+  id             Int          @id
+  name           String
+  readyInMinutes Int
+  servings       Int
+  image          String
+  instructions   String
+  vegetarian     Boolean
+  vegan          Boolean
+  glutenFree     Boolean
+  dairyFree      Boolean
+  ingredients    Ingredient[]
+  books          RecipeBook[]
+  users          UserRecipe[]
+}
+
+model Ingredient {
+  id         Int         @id
+  name       String
+  measures   Measurement @relation(fields: [measuresId], references: [id])
+  measuresId Int
+  recipe     Recipe      @relation(fields: [recipeId], references: [id])
+  recipeId   Int
+}
+
+model Measurement {
+  id          Int          @id @default(autoincrement())
+  us          String
+  metric      String
+  ingredients Ingredient[]
+}
+
+model RecipeBook {
+  recipe   Recipe @relation(fields: [recipeId], references: [id])
+  recipeId Int
+  book     Book   @relation(fields: [bookId], references: [id])
+  bookId   Int
+
+  @@id([recipeId, bookId])
+}
+
+model UserRecipe {
+  recipe   Recipe  @relation(fields: [recipeId], references: [id])
+  recipeId Int
+  user     User    @relation(fields: [userId], references: [id])
+  userId   Int
+  likes    Boolean
+
+  @@id([recipeId, userId])
+}
+
+model UserBook {
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+  book   Book @relation(fields: [bookId], references: [id])
+  bookId Int
+
+  @@id([userId, bookId])
 }
